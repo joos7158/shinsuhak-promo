@@ -33,7 +33,7 @@ for _s in (sys.stdout, sys.stderr):
         pass
 
 HERE = Path(__file__).resolve().parent
-SITE = HERE / "site"
+SITE = HERE / "docs"
 IMG_DIR = SITE / "img"
 POSTED = HERE / "posted.json"
 SECRETS = Path(os.environ.get("USERPROFILE", str(Path.home()))) / ".claude" / "secrets" / "meta_tokens.json"
@@ -229,7 +229,7 @@ def host_images(folder: Path, names, tag):
         im.save(out, "JPEG", quality=90, optimize=True)
         added.append(out)
         urls.append(f"{PAGES_BASE}/img/{out.name}")
-    _git("add", "-A", "site/img")
+    _git("add", "-A", "docs/img")
     c = _git("-c", "user.name=joos7158", "-c", "user.email=dunggrun@gmail.com", "commit", "-qm", f"img {tag}")
     if c.returncode == 0:
         p = _git("push", "-q", "origin", "main")
