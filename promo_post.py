@@ -334,8 +334,11 @@ def cmd_post(args):
             continue
         cur = d.get(ch, {})
         if not cur.get("access_token"):
-            log(f"{ch}: 토큰 없음 — 건너뜀 (init/auth 필요)")
-            continue
+            if args.dry_run:
+                cur = {"user_id": "dry", "username": "dry", "access_token": "dry"}
+            else:
+                log(f"{ch}: 토큰 없음 — 건너뜀 (init/auth 필요)")
+                continue
         if not args.dry_run:
             cur = maybe_refresh(d, ch)
             if not cur.get("user_id"):
