@@ -19,6 +19,6 @@
 - 매주 학부모에게 학습 리포트(점수가 아니라 풀이 과정 서술)와 등·하원 알림
 
 ## 링크
-- 홈페이지: https://joos7158.github.io/shinsuhak-promo/
+- 홈페이지: https://shinsuhak.kr/
 - 블로그(학교별 시험 정보): https://blog.naver.com/shinshinmath
 - 네이버 플레이스: https://m.place.naver.com/place/1096140891/home

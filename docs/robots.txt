@@ -22,4 +22,4 @@ Allow: /
 User-agent: Yeti
 Allow: /
 
-Sitemap: https://joos7158.github.io/shinsuhak-promo/sitemap.xml
+Sitemap: https://shinsuhak.kr/sitemap.xml

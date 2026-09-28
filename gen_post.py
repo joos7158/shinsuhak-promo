@@ -12,7 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 DOCS = ROOT / "docs"
 POSTS = DOCS / "posts"
-SITE = "https://joos7158.github.io/shinsuhak-promo"
+SITE = "https://shinsuhak.kr"
 FORBIDDEN = ["최고의", "1등 학원", "100점으로", "→ 100점", "점 상승", "등급 상승 보장", "MathDNA", "클로드", "Claude", "GPT"]
 
 def parse(md: str):
