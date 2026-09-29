@@ -7,6 +7,7 @@
   - 레드라인은 초안 단계에서 지켜져 있어야 한다(실명·학교+학년+반·성적 사례·도구명). 여기서는 금칙어만 한 번 더 막는다.
 """
 import re, sys, json, html, subprocess, datetime
+import urllib.parse
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -143,7 +144,7 @@ def build_sitemap():
             f"<url><loc>{SITE}/posts/</loc><lastmod>{today}</lastmod><changefreq>weekly</changefreq></url>"]
     for p in sorted(POSTS.glob("*.html")):
         if p.name != "index.html":
-            urls.append(f"<url><loc>{SITE}/posts/{p.name}</loc><lastmod>{p.name[:10]}</lastmod></url>")
+            urls.append(f"<url><loc>{SITE}/posts/{urllib.parse.quote(p.name)}</loc><lastmod>{p.name[:10]}</lastmod></url>")  # 09-29 한글 주소 퍼센트 인코딩(사이트맵 규격)
     DOCS.joinpath("sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "\n".join(urls) + "\n</urlset>\n", encoding="utf-8")
 
 def main():
