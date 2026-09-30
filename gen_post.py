@@ -126,16 +126,24 @@ main{{max-width:720px;margin:0 auto;padding:24px 16px 48px}} h1{{font-size:24px;
 </body></html>"""
 
 def build_index():
-    items = []
+    items = []; recent = []
     for p in sorted(POSTS.glob("*.html"), reverse=True):
         if p.name == "index.html": continue
         t = re.search(r"<title>(.*?) \| ", p.read_text(encoding="utf-8"))
         d = p.name[:10]
-        items.append(f'<li><a href="{p.name}">{html.escape(t.group(1)) if t else p.stem}</a> <span class="d">{d}</span></li>')
+        title = html.escape(html.unescape(t.group(1))) if t else p.stem  # 09-30 이중 이스케이프(&amp;quot;) 수리
+        items.append(f'<li><a href="{p.name}">{title}</a> <span class="d">{d}</span></li>')
+        recent.append((p.name, d, title))
     POSTS.joinpath("index.html").write_text(f"""<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>학교별 시험 정보 | 신수학학원 후곡캠퍼스</title><meta name="description" content="일산 지역 고등학교·중학교 시험 일정, 출제 경향, 내신 대비 글 모음. 신수학학원 후곡캠퍼스."><link rel="canonical" href="{SITE}/posts/">
 <style>body{{margin:0;font-family:"Noto Sans KR","Malgun Gothic",sans-serif;line-height:1.7;color:#1a1a1a}}header{{background:#F5EDDD;padding:18px 16px;font-size:14px}}header a{{color:#4A3826;text-decoration:none;font-weight:700}}main{{max-width:720px;margin:0 auto;padding:24px 16px 48px}}h1{{color:#4A3826;font-size:22px}}li{{margin:10px 0}}a{{color:#8A6A3C}}.d{{color:#6b5f52;font-size:13px;margin-left:8px}}</style></head>
 <body><header><a href="../">신수학학원 후곡캠퍼스</a></header><main><h1>학교별 시험 정보</h1><p>일산 지역 학교의 시험 일정·출제 경향·내신 대비 글입니다. 매주 한 편씩 올립니다.</p><ul>{''.join(items)}</ul></main></body></html>""", encoding="utf-8")
+    # 09-30 홈 화면 <!--POSTS--> 칸에 최근 3편 반영 (표식 밖은 건드리지 않음 — 네이버 소유확인 태그 보존)
+    home = DOCS / "index.html"; src = home.read_text(encoding="utf-8")
+    if src.count("<!--POSTS-->") == 1 and src.count("<!--/POSTS-->") == 1:
+        lis = "".join(f'\n    <li><a href="posts/{n}"><span class="d">{d}</span><span class="t">{t}</span></a></li>' for n, d, t in recent[:3])
+        a = src.index("<!--POSTS-->") + len("<!--POSTS-->"); b = src.index("<!--/POSTS-->")
+        home.write_text(src[:a] + f'\n  <ul class="posts">{lis}\n  </ul>\n  ' + src[b:], encoding="utf-8")
     return len(items)
 
 def build_sitemap():
