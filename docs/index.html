@@ -127,6 +127,19 @@ h2{font-family:"Noto Serif KR",serif;font-size:30px;line-height:1.35;color:var(-
 .sub{color:var(--muted);margin:0 0 36px;max-width:620px}
 
 /* 방식 카드 */
+#lesson-example{scroll-margin-top:74px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:clamp(20px,4vw,36px);margin:0 0 24px}
+#lesson-example h3{font-family:"Noto Serif KR",serif;color:var(--deep);font-size:clamp(21px,3vw,27px);line-height:1.4;margin:0 0 20px}
+.lesson-body{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,4vw,40px);align-items:start}
+.lesson-work{background:var(--board);color:var(--chalk);border-radius:12px;padding:20px 24px;margin:0}
+.lesson-work figcaption{color:#f3d9a4;font-weight:700}
+.lesson-work dl{margin:10px 0 0}
+.lesson-work dt{color:#cfe2d8;font-size:14px}
+.lesson-work dd{font:clamp(21px,3vw,27px)/1.45 Georgia,"Noto Serif KR",serif;margin:1px 0 0}
+.lesson-work dd + dt{border-top:1px solid #547067;margin-top:12px;padding-top:12px}
+.lesson-reading h4{color:var(--deep);font-size:17px;margin:0 0 4px}
+.lesson-reading p{color:#4a4238;font-size:16px;margin:0}
+.lesson-reading p + h4{margin-top:16px}
+@media (max-width:720px){.lesson-body{grid-template-columns:1fr}}
 .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 24px}
 .card .n{font-family:"Noto Serif KR",serif;color:var(--camel);font-size:15px;font-weight:700}
@@ -247,6 +260,27 @@ footer{font-size:13px;color:var(--muted);text-align:center;padding:36px 16px 48p
   <p class="kicker">HOW WE TEACH</p>
   <h2>채점보다 "어디서 멈췄나"를 봅니다</h2>
   <p class="sub">맞았는지 틀렸는지는 시작일 뿐입니다. 같은 오답이라도 멈춘 자리는 아이마다 다르고, 그 자리를 찾아야 다음 시험이 달라집니다.</p>
+  <article id="lesson-example" aria-labelledby="lesson-title">
+    <p class="kicker">실제 수업 사례 · 중등 수학</p>
+    <h3 id="lesson-title">같은 풀이에 왜 두 가지 비가 있을까요?</h3>
+    <div class="lesson-body">
+      <figure class="lesson-work">
+        <figcaption>학생의 손풀이에서 옮긴 두 줄</figcaption>
+        <dl>
+          <dt>부피의 비로 세운 식</dt>
+          <dd>27 : 125 = <i>x</i> : 625</dd>
+          <dt>다른 줄에 남은 계산</dt>
+          <dd>625 × 3/5</dd>
+        </dl>
+      </figure>
+      <div class="lesson-reading">
+        <h4>풀이에서 보인 것</h4>
+        <p>아이는 닮은 두 입체도형의 길이의 비 3 : 5를 부피의 비 27 : 125로 바르게 바꿨습니다. 첫 줄의 식대로라면 625에 27/125를 곱하면 됩니다. 그런데 풀이의 다른 줄에는 625에 길이의 비인 3/5를 곱한 흔적이 있었습니다.</p>
+        <h4>다음 되짚기</h4>
+        <p>“왜 마지막에 625에 3/5를 곱했는지 그 줄을 다시 설명해볼래?” 다음 수업을 위해 준비한 질문입니다. 다음 되짚기에서 아이는 바람을 넣기 전 풍선의 부피를 구하는 두 문제를 풀었습니다. 지름이 2.5배가 된 문제는 맞혔고, 4/3배가 된 문제는 틀렸습니다.</p>
+      </div>
+    </div>
+  </article>
   <div class="cards">
     <div class="card"><div class="n">01</div><h3>원장이 직접 읽는 손풀이</h3><p>풀이 과정을 한 줄씩 읽고 계산에서 멈췄는지, 개념 연결에서 멈췄는지 가려 되짚어 줍니다. 되짚기 마무리는 원장이 직접 합니다.</p></div>
     <div class="card"><div class="n">02</div><h3>학생마다 다른 일일테스트</h3><p>그날의 시험지는 아이마다 다릅니다. 틀린 유형은 다음 시험지에 다시 나와, 한 번 틀린 것을 그냥 지나치지 않습니다.</p></div>
