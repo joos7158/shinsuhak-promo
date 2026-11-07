@@ -134,9 +134,14 @@ h2{font-family:"Noto Serif KR",serif;font-size:30px;line-height:1.35;color:var(-
 #lesson-example h3{font-size:clamp(23px,3vw,28px)}
 .lesson-body{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1fr);gap:clamp(20px,4vw,40px);align-items:start}
 .lesson-scan{margin:0}
-.lesson-scan > a{display:block;border:1px solid var(--line);border-radius:10px;overflow:hidden}
-.lesson-scan img{display:block;width:100%;height:auto}
-.lesson-scan figcaption{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;margin-top:6px;font-size:14px;color:var(--muted)}
+.lesson-equation{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.lesson-equation > div{display:flex;flex-direction:column;padding:clamp(10px,1.8vw,20px);min-width:0}
+.lesson-equation > div + div{background:var(--paper);border-left:1px solid var(--line)}
+.lesson-equation small{display:block;font-size:14px;font-weight:700;color:var(--muted);margin-bottom:12px}
+.lesson-equation img{display:block;width:min(100%,184px);height:auto;align-self:center;margin:auto}
+.lesson-transcription{display:grid;align-content:center;flex:1;font-family:Georgia,"Times New Roman",serif;font-size:clamp(21px,2.5vw,29px);line-height:1.6;color:var(--deep)}
+.lesson-transcription span{white-space:nowrap}
+.lesson-scan figcaption{margin-top:8px;color:var(--muted);font-size:14px}
 .lesson-card a{color:var(--camel-d);text-underline-offset:3px}
 .lesson-reading h4{margin:0 0 6px;font-size:18px;color:var(--deep)}
 .lesson-reading blockquote,.report-note blockquote{margin:16px 0 10px;padding:4px 0 4px 15px;border-left:3px solid var(--camel);color:var(--deep)}
@@ -271,14 +276,17 @@ footer{font-size:13px;color:var(--muted);text-align:center;padding:36px 16px 48p
     <h3 id="lesson-title">원장이 직접 읽는 손풀이</h3>
     <div class="lesson-body">
       <figure class="lesson-scan">
-        <a href="img/lesson-volume-work.webp" aria-label="중등 도형 손풀이 크게 보기"><img src="img/lesson-volume-work.webp" width="878" height="607" alt="왼쪽 아래에 부피의 비 27 : 125 = x : 625가 있고, 옆에 3/5를 곱한 흔적이 남은 손풀이"></a>
-        <figcaption><span>중등 도형 · 실제 시험지의 풀이 부분</span><a href="img/lesson-volume-work.webp">손풀이 크게 보기</a></figcaption>
+        <div class="lesson-equation">
+          <div><small>학생의 손글씨</small><img src="img/lesson-volume-ratio.webp" width="312" height="279" alt="학생이 시험지에 두 줄로 적은 비례식. 27 대 125는 x 대 625."></div>
+          <div><small>같은 식을 옮겨 쓰면</small><div class="lesson-transcription"><span>27 : 125</span><span>= <i>x</i> : 625</span></div></div>
+        </div>
+        <figcaption><a href="img/lesson-volume-work.webp">주변 계산까지 보기</a></figcaption>
       </figure>
       <div class="lesson-reading">
-        <h4>같은 풀이에 왜 두 가지 비가 있을까요?</h4>
-        <p>왼쪽 아래를 보면, 아이는 길이의 비 3 : 5를 부피의 비 27 : 125로 바르게 바꿨습니다. 이 식대로라면 625에 27/125를 곱하면 됩니다. 그런데 바로 옆에는 길이의 비인 3/5를 곱한 흔적이 있습니다. 다음 수업을 위해 이런 질문을 준비했습니다.</p>
+        <h4>부피를 구하는데 왜 3/5를 곱했을까요?</h4>
+        <p>아이는 길이의 비 3 : 5를 부피의 비 27 : 125로 바르게 바꿨습니다. 이 식대로라면 625에 27/125를 곱해야 하는데, 다른 줄에는 3/5를 곱한 흔적이 있습니다. 다음 수업을 위해 한 가지 질문을 준비했습니다.</p>
         <blockquote>“왜 마지막에 625에 3/5를 곱했는지 그 줄을 다시 설명해볼래?”</blockquote>
-        <p>다음 되짚기에서도 아이는 바람을 넣기 전 풍선의 부피를 구했습니다. 지름이 2.5배가 된 문제는 맞혔고, 4/3배가 된 문제는 틀렸습니다.</p>
+        <p>다음 되짚기에서 풍선의 원래 부피를 다시 구했습니다. 지름이 2.5배가 된 문제는 맞혔고, 4/3배가 된 문제는 틀렸습니다.</p>
       </div>
     </div>
   </article>
