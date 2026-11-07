@@ -62,6 +62,7 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
+    {"@type": "Question", "name": "아이가 질문을 못 하면 막힌 채로 수업이 끝나지 않을까요?", "acceptedAnswer": {"@type": "Answer", "text": "토요일 보강에서 한 학생이 문제를 시작하지 못했을 때는 원장이 두 가지 방법으로 풀이를 설명했습니다. 주간 리포트에는 그 내용을 적고, 집에서 ‘오답 정리했니?’라고 한 번 물어봐 달라고 부탁드렸습니다. 또 다른 수업에서는 조교 선생님이 설명한 뒤 학생이 표시한 정답은 도움받은 오답으로 남기고, 그날 조건이 달라진 문제를 학생이 혼자 푼 것은 따로 기록했습니다."}},
     {"@type": "Question", "name": "신수학학원은 어디에 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "경기도 고양시 일산서구 일산로 574, 301호입니다. 일산 후곡 학원가 안에 있고, 후곡마을 아파트 단지에서 걸어서 올 수 있습니다."}},
     {"@type": "Question", "name": "어떤 학생이 다니나요?", "acceptedAnswer": {"@type": "Answer", "text": "고등학생 중심이고 중학생도 다닙니다. 학원 가까운 주엽고, 저동고, 대화고를 비롯해 정발고, 일산대진고, 덕이고, 가좌고, 저현고, 안곡고, 백신고 등 일산 지역 고등학교 내신을 준비합니다. 중학교는 오마중, 신일중, 한수중, 발산중 등입니다."}},
     {"@type": "Question", "name": "우리 아이 학교도 준비하나요?", "acceptedAnswer": {"@type": "Answer", "text": "네. 주엽고·저동고·대화고처럼 학원 가까운 학교는 물론, 일산 지역 어느 고등학교든 학교별 시험 범위와 교과서를 확인해 진도를 따로 잡고, 서술형·수행평가도 첨삭합니다."}},
@@ -327,7 +328,7 @@ footer{font-size:13px;color:var(--muted);text-align:center;padding:36px 16px 48p
 <section class="s flow"><div class="wrap">
   <p class="kicker">A DAY AT SHINSUHAK</p>
   <h2>하루 수업은 이렇게 흘러갑니다</h2>
-  <p class="sub">정해진 시간에 시작하고 정해진 시간에 끝납니다.</p>
+  <p class="sub">지난 풀이를 어떻게 다시 보는지, 하루 수업의 순서입니다. <a href="#when-stuck">아이가 먼저 질문하기 어려울 때는 어떻게 하나요?</a></p>
   <div class="steps">
     <div class="step"><h3>되짚기</h3><p>지난 시간 멈췄던 자리를 아이가 직접 설명합니다.</p></div>
     <div class="step"><h3>문제 풀이</h3><p>그날 아이에게 맞춘 일일테스트를 풉니다.</p></div>
@@ -377,6 +378,11 @@ footer{font-size:13px;color:var(--muted);text-align:center;padding:36px 16px 48p
 <section class="s flow" id="faq"><div class="wrap">
   <p class="kicker">FAQ</p>
   <h2>자주 묻는 질문</h2>
+  <details id="when-stuck" open style="scroll-margin-top:74px"><summary>아이가 질문을 못 하면 막힌 채로 수업이 끝나지 않을까요?</summary>
+    <p>토요일 보강에서 한 학생이 문제를 시작하지 못했을 때는 원장이 두 가지 방법으로 풀이를 설명했습니다. 주간 리포트에는 그 내용을 적고, 집에서 “오답 정리했니?”라고 한 번 물어봐 달라고 부탁드렸습니다.</p>
+    <p>또 다른 수업에서는 조교 선생님이 설명한 뒤 학생이 표시한 정답은 도움받은 오답으로 남기고, 그날 조건이 달라진 문제를 학생이 혼자 푼 것은 따로 기록했습니다.</p>
+    <p><a href="posts/2026-11-07-아이가-질문을-못-하면-누가-먼저-알아차릴까요-일산-후곡-수학학원-신수학.html">도움을 받은 문제와 혼자 푼 문제, 수업 기록 읽기</a></p>
+  </details>
   <details><summary>어디에 있나요?</summary><p>경기도 고양시 일산서구 일산로 574, 301호. 일산 후곡 학원가 안이고, 후곡마을 아파트 단지에서 걸어서 올 수 있습니다.</p></details>
   <details><summary>우리 아이 학교도 준비하나요?</summary><p>네. 주엽고·저동고·대화고처럼 학원 가까운 학교는 물론, 일산 지역 어느 고등학교든 학교별 시험 범위와 교과서를 확인해 진도를 따로 잡고, 서술형·수행평가도 첨삭합니다.</p></details>
   <details><summary>중학생도 다닐 수 있나요?</summary><p>네. 오마중, 신일중, 한수중, 발산중 등 가까운 중학교 내신을 학교별 시험 범위에 맞춰 준비합니다.</p></details>
@@ -391,9 +397,9 @@ footer{font-size:13px;color:var(--muted);text-align:center;padding:36px 16px 48p
   <p class="sub">일산 지역 학교의 시험 일정·출제 경향·내신 대비 글을 매주 한 편씩 올립니다.</p>
   <!--POSTS-->
   <ul class="posts">
+    <li><a href="posts/2026-11-07-아이가-질문을-못-하면-누가-먼저-알아차릴까요-일산-후곡-수학학원-신수학.html"><span class="d">2026-11-07</span><span class="t">아이가 질문을 못 하면, 누가 먼저 알아차릴까요?</span></a></li>
     <li><a href="posts/2026-11-05-일산대진고-가좌고-기말-전-수학-수행평가-10곳-일산-후곡-수학학원-신수.html"><span class="d">2026-11-05</span><span class="t">일산대진고·가좌고 기말 전 수학 수행평가 10곳</span></a></li>
     <li><a href="posts/2026-11-02-일산대진고-확통은-고2-2027-입학생-수학-순서-일산-후곡-수학학원-신.html"><span class="d">2026-11-02</span><span class="t">일산대진고 확통은 고2, 2027 입학생 수학 순서</span></a></li>
-    <li><a href="posts/2026-10-31-일산대진고-기말-30점-서술형-일산-고교-19곳-일산-후곡-수학학원-신수.html"><span class="d">2026-10-31</span><span class="t">일산대진고 기말 30점 서술형, 일산 고교 19곳</span></a></li>
   </ul>
   <!--/POSTS-->
   <a class="more" href="posts/">전체 글 보기 →</a>
