@@ -21,12 +21,18 @@ def parse(md: str):
     절 헤더가 없는 옛 형식(첫 줄=제목, '태그:' 줄 이후=태그)도 받는다."""
     lines = md.splitlines()
     sections, cur = {}, None
-    has_headers = any(re.match(r"^#\s*(제목|본문)\b", ln.strip()) for ln in lines)
+    # 10-04 절 헤더 = '# 낱말'(# 뒤 띄어쓰기) 또는 띄어쓰기 없는 '#제목/본문/태그/그림/출처'만.
+    #   예전 r"^#\s*" 는 태그 줄 '#일산수학학원 #후곡…' 까지 새 절로 잡아 태그가 0개가 됐다.
+    def header(s):
+        if s.startswith("##"): return None
+        m = re.match(r"^#\s+([^\s(（]+)", s) or re.match(r"^#((?:제목|본문|태그|그림|출처)[^\s(（#]*)(?=$|[\s(（])", s)
+        return m.group(1) if m else None
+    has_headers = any(header(ln.strip()) in ("제목", "본문") for ln in lines)
     if has_headers:
         for ln in lines:
-            m = re.match(r"^#\s*([^\s(（]+)", ln.strip())
-            if m and not ln.startswith("##"):
-                cur = m.group(1); sections.setdefault(cur, []); continue
+            h = header(ln.strip())
+            if h:
+                cur = h; sections.setdefault(cur, []); continue
             if cur: sections[cur].append(ln)
         title = next((s.strip().lstrip("#").strip() for s in sections.get("제목", []) if s.strip() and s.strip() != "---"), None)
         body = "\n".join(l for l in sections.get("본문", []) if l.strip() != "---").strip()
@@ -119,7 +125,7 @@ main{{max-width:720px;margin:0 auto;padding:24px 16px 48px}} h1{{font-size:24px;
 <div class="meta">{date} · 신수학학원 후곡캠퍼스 (일산 후곡 학원가)</div>
 {body}
 <div class="tags">{tags}</div>
-<div class="cta"><strong>우리 아이 지금 어디서 막혀 있을까요?</strong><br>일산 후곡 학원가 신수학학원 — 20년 경력 원장이 직접 손풀이를 읽습니다. 한 반 5~6명.<br>
+<div class="cta"><strong>우리 아이 지금 어디서 막혀 있을까요?</strong><br>일산 후곡 학원가 신수학학원 — 20년 경력 원장이 남은 풀이를 보고 멈춘 자리를 찾습니다. 한 반 5~6명.<br>
 <a href="https://booking.naver.com/booking/12/bizes/1596630">입학 상담 예약 (40분, 무료)</a><a class="s" href="https://m.place.naver.com/place/1096140891/home">네이버 지도</a><a class="s" href="../">학원 소개</a></div>
 </main>
 <footer>신수학학원 후곡캠퍼스 · 경기도 고양시 일산서구 일산로 574, 301호 · 010-5392-3917</footer>

@@ -38,6 +38,7 @@ IMG_DIR = SITE / "img"
 POSTED = HERE / "posted.json"
 SECRETS = Path(os.environ.get("USERPROFILE", str(Path.home()))) / ".claude" / "secrets" / "meta_tokens.json"
 PAGES_BASE = "https://joos7158.github.io/shinsuhak-promo"
+IMG_BASE = "https://shinsuhak.kr"  # docs/CNAME=shinsuhak.kr → github.io 주소는 301 (10-03 인스타 실패 원인)
 REDIRECT_URI = f"{PAGES_BASE}/auth.html"
 
 TH_API = "https://graph.threads.net/v1.0"
@@ -228,7 +229,7 @@ def host_images(folder: Path, names, tag):
         out = IMG_DIR / f"{tag}_{i:02d}.jpg"
         im.save(out, "JPEG", quality=90, optimize=True)
         added.append(out)
-        urls.append(f"{PAGES_BASE}/img/{out.name}")
+        urls.append(f"{IMG_BASE}/img/{out.name}")
     _git("add", "-A", "docs/img")
     c = _git("-c", "user.name=joos7158", "-c", "user.email=dunggrun@gmail.com", "commit", "-qm", f"img {tag}")
     if c.returncode == 0:
@@ -348,7 +349,7 @@ def cmd_post(args):
         imgs = s.get("images", [])
         urls = []
         if imgs:
-            urls = [f"{PAGES_BASE}/img/{tag}_{i:02d}.jpg" for i in range(1, len(imgs) + 1)] if args.dry_run \
+            urls = [f"{IMG_BASE}/img/{tag}_{i:02d}.jpg" for i in range(1, len(imgs) + 1)] if args.dry_run \
                 else host_images(folder, imgs, tag + ("" if ch == "threads" else "_ig"))
         text = s.get("text") or s.get("caption") or ""
         try:
